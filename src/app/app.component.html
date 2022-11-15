@@ -1,10 +1,18 @@
-<div class="container">
+<div class="container" *ngIf="wheatherData">
   <div class="upper-data">
-    <img src="../assets/day.jpg" alt="Day Image" *ngIf="14 > 15" />
-    <img src="../assets/night.jpg" alt="Night Image" *ngIf="14 <= 15" />
+    <img
+      src="../assets/day.jpg"
+      alt="Day Image"
+      *ngIf="wheatherData[1].temp2m > 15"
+    />
+    <img
+      src="../assets/night.jpg"
+      alt="Night Image"
+      *ngIf="wheatherData[1].temp2m <= 15"
+    />
     <div class="weather-data">
       <div class="location">Argentina</div>
-      <div class="temperature">{{ 14.4 | number: "1.0-0" }}°C</div>
+      <div class="temperature">{{ wheatherData[1].temp2m }}°C</div>
     </div>
   </div>
   <div class="lower-data">
@@ -15,28 +23,28 @@
           <img src="../assets/Temperature.png" alt="Min Temp Icon" />
           <span>min</span>
         </div>
-        <div class="info-block-value">10°C</div>
+        <div class="info-block-value">{{ minTemp }}°C</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">
           <img src="../assets/Hot.png" alt="Min Temp Icon" />
           <span>max</span>
         </div>
-        <div class="info-block-value">20°C</div>
+        <div class="info-block-value">{{ maxTemp }}°C</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">
           <img src="../assets/Humidity.png" alt="Min Temp Icon" />
           <span>humidity</span>
         </div>
-        <div class="info-block-value">67%</div>
+        <div class="info-block-value">{{ humidity }}</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">
           <img src="../assets/Wind.png" alt="Min Temp Icon" />
           <span>wind</span>
         </div>
-        <div class="info-block-value">11 km/h</div>
+        <div class="info-block-value">{{ wind }} km/h</div>
       </div>
     </div>
   </div>
